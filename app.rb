@@ -11,7 +11,7 @@ get '/capabilities' do
   status 200
   
   {
-    name: "Cipher Vault API",
+    name: "Classical Cipher API",
     version: "1.0.0",
     ciphers: ["base64"], # We will add "caesar" and "vigenere" here later!
     endpoints: {
