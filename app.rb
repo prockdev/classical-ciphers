@@ -5,6 +5,22 @@ require 'base64'
 set :bind, '0.0.0.0'
 set :port, ENV['PORT'] || 4567
 
+# --- Discovery Endpoint ---
+get '/capabilities' do
+  content_type :json
+  status 200
+  
+  {
+    name: "Cipher Vault API",
+    version: "1.0.0",
+    ciphers: ["base64"], # We will add "caesar" and "vigenere" here later!
+    endpoints: {
+      base64_encode: "/encode/base64",
+      base64_decode: "/decode/base64"
+    }
+  }.to_json
+end
+
 # --- Health Check ---
 get '/health' do
   status 200
